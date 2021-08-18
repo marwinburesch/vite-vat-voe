@@ -3,6 +3,7 @@ import Square from './Square';
 
 function Board(): JSX.Element {
   const [squares, setSquares] = useState<string[]>(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState<boolean>(true);
 
   function renderSquare(i: number) {
     return <Square value={squares[i]} onClick={() => handleClick(i)} />;
@@ -10,8 +11,9 @@ function Board(): JSX.Element {
 
   function handleClick(i: number) {
     const newSquares = [...squares];
-    newSquares[i] = 'X';
+    newSquares[i] = xIsNext ? 'X' : 'O';
     setSquares(newSquares);
+    setXIsNext(!xIsNext);
   }
 
   const status = 'Next player: X';
