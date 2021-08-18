@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Square(): JSX.Element {
-  const [value, setValue] = useState(null);
+type SquareProps = {
+  value: number;
+  onClick: () => void;
+};
 
+function Square(props: SquareProps): JSX.Element {
   return (
-    <button className="square" onClick={() => setValue('X')}>
-      {value}
+    <button className="square" onClick={props.onClick}>
+      {props.value}
     </button>
   );
 }
